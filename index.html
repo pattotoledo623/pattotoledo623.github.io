@@ -14,7 +14,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="src/css/styles.css">
-        <script type="text/javascript" src="src/js/script.js"></script>
+        <script type="text/javascript" src="src/js/funcionalidad/funcionalidad.js"></script>
     </head>
     <body style="width: 100%; height: 100%;">
         <div><h1>¿Quieres ser mi novia?</h1></div>
@@ -25,6 +25,11 @@
             <div id="segunda-respuesta" class="segunda">
                <button>No</button>
             </div>
+            <div style="width: auto; height: auto;" id="tercera-respuesta" class="tercera">
+                <a href="regresive.html">
+                    <button style="width: auto; height: auto;">En 8 años papito</button>
+                </a>
+            </div>
         </div>
         <div id="openModal" class="modalDialog">
             <div>
@@ -33,10 +38,10 @@
                 <p class="text-white">Y si mejor nos casamos? 0.0</p>
                 <div class="row">
                     <div class="col">
-                        <button onclick="Respuesta_SI()">Si</button>
+                        <button id="boton_modal_si" onclick="Respuesta_SI()">Si</button>
                     </div>
                     <div class="col">
-                        <button onclick="Respuesta_NO()">No</button>
+                        <button id="boton_modal_no" onclick="Respuesta_NO()">No</button>
                     </div>
                 </div>
             </div>
@@ -47,9 +52,10 @@
     
         boton_no.onmouseover = () => {
             boton_no.style.position = "absolute";
-            boton_no.style.left = Math.random()*1350 + 'px';
-            boton_no.style.top = Math.random()*700 + 'px';
+            boton_no.style.left = Math.random() * (window.innerWidth - boton_no.offsetWidth) + 'px';
+            boton_no.style.top = Math.random() * (window.innerHeight - boton_no.offsetHeight) + 'px';
         }
-        
+    
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html> 
