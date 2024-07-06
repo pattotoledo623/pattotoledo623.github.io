@@ -65,3 +65,11 @@ transition: opacity 400ms ease-in;
 	box-shadow: 1px 1px 3px #000;
 }
 .close:hover { background: #00d9ff; }
+
+.segunda {
+	position: relative; /* Asegúrate de que el elemento esté posicionado correctamente */
+}
+
+.hidden{
+	display: none;
+}
