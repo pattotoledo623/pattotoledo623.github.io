@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario: Marco Legal Ambiental para Centros de Datos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #475569;
+            --success-color: #16a34a;
+            --info-color: #06b6d4;
+            --warning-color: #f59e0b;
+            --danger-color: #dc2626;
+            --light-color: #f8fafc;
+            --dark-color: #0f172a;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-800: #1e293b;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(rgba(15, 23, 42, 0.05), rgba(15, 23, 42, 0.1)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+
+        .quiz-header {
+            background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .quiz-header h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .quiz-body {
+            padding: 25px;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--gray-200);
+            padding-bottom: 20px;
+        }
+
+        .question-container:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .question {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .question-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .options-container {
+            margin-left: 40px;
+        }
+
+        .option {
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            background-color: var(--gray-100);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            background-color: var(--gray-200);
+        }
+
+        .option.selected {
+            background-color: rgba(37, 99, 235, 0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 30px auto 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .reset-btn {
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .reset-btn:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--gray-200);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .quiz-container {
+                margin: 20px 10px;
+            }
+
+            .quiz-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .quiz-body {
+                padding: 20px 15px;
+            }
+
+            .question {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>Cuestionario: Marco Legal Ambiental para Centros de Datos</h1>
+        </div>
+        <div class="quiz-body">
+            <div id="questionContainer">
+                <!-- Question content will be dynamically loaded here -->
+            </div>
+            <div class="button-container" style="text-align: center; margin-top: 20px;">
+                <button class="reset-btn" id="repeatQuiz">Repetir Cuestionario</button>
+                <button class="reset-btn" id="goToPage" style="margin-left: 10px;">Inicio</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        EcoDataCenter Ecuador &copy; 2025 | Cuestionario de evaluación sobre Marco Legal Ambiental
+    </div>
+
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create an array containing all questions, options and the correct answer
+            const questions = [
+                {
+                    number: 1,
+                    text: "Según la Constitución del Ecuador (2008), ¿cuál de los siguientes artículos reconoce el derecho a vivir en un ambiente sano?",
+                    options: [
+                        {value: "a", label: "Artículo 8"},
+                        {value: "b", label: "Artículo 14"},
+                        {value: "c", label: "Artículo 26"},
+                        {value: "d", label: "Artículo 43"}
+                    ],
+                    correct: "b"
+                },
+                {
+                    number: 2,
+                    text: "¿Qué porcentaje del consumo eléctrico global representan aproximadamente los centros de datos?",
+                    options: [
+                        {value: "a", label: "0.5%"},
+                        {value: "b", label: "2%"},
+                        {value: "c", label: "5%"},
+                        {value: "d", label: "10%"}
+                    ],
+                    correct: "b"
+                },
+                {
+                    number: 3,
+                    text: "En Ecuador, ¿qué normativa regula específicamente la gestión de residuos de aparatos eléctricos y electrónicos?",
+                    options: [
+                        {value: "a", label: "Ley Orgánica Ambiental (LOA)"},
+                        {value: "b", label: "Reglamento RAEE (MAATE)"},
+                        {value: "c", label: "ISO 14001"},
+                        {value: "d", label: "Punto Verde"}
+                    ],
+                    correct: "b"
+                },
+                {
+                    number: 4,
+                    text: "¿Qué artículo de la Ley Orgánica Ambiental (LOA) se relaciona con la eficiencia energética?",
+                    options: [
+                        {value: "a", label: "Artículo 8"},
+                        {value: "b", label: "Artículo 19"},
+                        {value: "c", label: "Artículo 26"},
+                        {value: "d", label: "Artículo 43"}
+                    ],
+                    correct: "c"
+                },
+                {
+                    number: 5,
+                    text: "¿Cuál es el principal componente de los residuos de aparatos eléctricos y electrónicos (RAEE)?",
+                    options: [
+                        {value: "a", label: "Metales"},
+                        {value: "b", label: "Plásticos"},
+                        {value: "c", label: "Vidrio"},
+                        {value: "d", label: "Placas de circuito"}
+                    ],
+                    correct: "a"
+                }
+            ];
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+            
+            // Function to load a question into the container
+            function loadQuestion() {
+                const question = questions[currentQuestionIndex];
+                const container = document.getElementById('questionContainer');
+                
+                // Build the HTML for the current question
+                container.innerHTML = `
+                    <div class="question-container">
+                        <div class="question">
+                            <span class="question-number">${question.number}</span>
+                            <span>${question.text}</span>
+                        </div>
+                        <div class="options-container">
+                            ${question.options.map(option => `
+                                <div class="option" data-value="${option.value}">
+                                    <input type="radio" name="question${question.number}" id="q${question.number}${option.value}" value="${option.value}">
+                                    <label for="q${question.number}${option.value}">${option.label}</label>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+
+                // Add click event for the new options
+                const optionsDivs = container.querySelectorAll('.option');
+                optionsDivs.forEach(optionDiv => {
+                    optionDiv.addEventListener('click', function() {
+                        // Deselect any other options (if needed)
+                        container.querySelectorAll('.option').forEach(opt => {
+                            opt.classList.remove('selected');
+                            opt.querySelector('input').checked = false;
+                        });
+                        // Mark selected option
+                        this.classList.add('selected');
+                        const radioInput = this.querySelector('input');
+                        radioInput.checked = true;
+                        
+                        // After selecting, validate answer after a short delay to allow user to see selection
+                        setTimeout(() => {
+                            validateAnswer(radioInput.value);
+                        }, 300); // slight delay before processing
+                    });
+                });
+            }
+
+            // Function to validate the answer and show SweetAlert2 message
+            function validateAnswer(selectedValue) {
+                const question = questions[currentQuestionIndex];
+
+                if(selectedValue === question.correct) {
+                    score++;
+                    Swal.fire({
+                        title: 'Bien hecho :)',
+                        text: '¡Respuesta correcta!',
+                        icon: 'success',
+                        confirmButtonColor: '#2563eb',
+                        timer: 3000,
+                        timerProgressBar: true,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false
+                    }).then(() => {
+                        nextQuestion();
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Suerte la próxima vez :(',
+                        text: 'Respuesta incorrecta',
+                        icon: 'error',
+                        confirmButtonColor: '#2563eb',
+                        timer: 3000,
+                        timerProgressBar: true,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false
+                    }).then(() => {
+                        nextQuestion();
+                    });
+                }
+            }
+
+            // Function to proceed to next question or display final result
+            function nextQuestion() {
+                currentQuestionIndex++;
+                if(currentQuestionIndex < questions.length) {
+                    loadQuestion();
+                } else {
+                    // Final Result alert
+                    Swal.fire({
+                        title: 'Resultado Final',
+                        text: `Has obtenido ${score} de ${questions.length} puntos.`,
+                        icon: score >= 3 ? 'success' : 'info',
+                        confirmButtonColor: '#2563eb',
+                        timer: 3000,
+                        timerProgressBar: true,
+                        allowOutsideClick: false,
+                        allowEscapeKey: false
+                    });
+                }
+            }
+
+            // Attach event listeners to the new buttons
+            document.getElementById('repeatQuiz').addEventListener('click', function() {
+                // Reset local variables and reload the question
+                currentQuestionIndex = 0;
+                score = 0;
+                loadQuestion();
+            });
+            
+            document.getElementById('goToPage').addEventListener('click', function() {
+                // Redirect the user to another page
+                window.location.href = 'index.html';
+            });
+
+            // Initially load the first question
+            loadQuestion();
+        });
+    </script>
+</body>
+</html>
