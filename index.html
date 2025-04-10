@@ -127,6 +127,7 @@
         }
 
         .card {
+            height: fit-content;
             border: none;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -389,6 +390,14 @@
         .swiper-slide-active .slide-content {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .h-fit{
+            height: fit-content;
+        }
+
+        .espejo-v {
+            transform: scaleY(-1);
         }
 
         @media (max-width: 991.98px) {
@@ -806,7 +815,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
+                <div class="col-lg-5 h-fit" data-aos="fade-left" data-aos-delay="200">
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="bi bi-bar-chart me-2"></i>
@@ -910,7 +919,7 @@
                 </div>
                 
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
-                    <div class="card mb-4">
+                    <div class="card mb-4 h-fit">
                         <div class="card-header">
                             <i class="bi bi-check2-square me-2"></i>
                             Acciones implementadas
@@ -957,7 +966,7 @@
                         </div>
                     </div>
                     
-                    <div class="card">
+                    <div class="card h-fit">
                         <div class="card-header">
                             <i class="bi bi-calendar-check me-2"></i>
                             Plan de acción 2025-2027
@@ -1010,7 +1019,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-wave"></div>
+        <div class="footer-wave espejo-v"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4 mb-md-0">
