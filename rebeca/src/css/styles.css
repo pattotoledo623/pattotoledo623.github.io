@@ -511,17 +511,26 @@ body {
 }
 
 /* ── RESPONSIVE ───────────────────────────── */
+/* ── RESPONSIVE ───────────────────────────── */
 @media (max-width: 600px) {
-  .hero__image-wrap { width: 80vw; }
-  .hero__content    { padding-top: 1rem; }
-  .wishes-grid      { grid-template-columns: 1fr; }
-  .hero__bg-text span { font-size: 22vw; }
+  /* ¡MAGIA AQUÍ! Empujamos todo hacia arriba */
+  .hero {
+    justify-content: flex-start; 
+    padding-top: 12vh; /* Si lo quieres más pegado al techo, bájalo a 8vh o 5vh */
+  }
 
-  /* En móvil las palabras pueden romper en dos líneas */
+  .hero__image-wrap { width: 85vw; } /* Agrandé un poco a Rebeca para que luzca más */
+  .hero__content    { padding-top: 0; }
+  .wishes-grid      { grid-template-columns: 1fr; }
+  .hero__bg-text span { font-size: 24vw; } /* Letras del fondo un poquito más grandes */
+
+  /* Ajustamos el título */
   .hero__title {
     flex-wrap: wrap;
     gap: 0.2em;
+    margin-bottom: 5rem; /* Reducimos el espacio inferior para que no haya otro hueco entre el título y la chica */
   }
+  
   .hero__title-feliz,
-  .hero__title-cumple { font-size: clamp(2rem, 9vw, 3.5rem); }
+  .hero__title-cumple { font-size: clamp(2.5rem, 11vw, 4rem); } /* Texto un poco más legible */
 }
