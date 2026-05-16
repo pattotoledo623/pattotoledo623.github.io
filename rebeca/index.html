@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>¡Feliz Cumpleaños Rebeca! 🐄🎉</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Pacifico&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/styles.css" />
+</head>
+<body>
+
+  <!-- Partículas flotantes -->
+  <div class="particles" id="particles"></div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+
+    <!-- Fondo: letras enormes verticales (te encantó este) -->
+    <div class="hero__bg-text">
+      <span>FELIZ</span>
+      <span>CUMPLE</span>
+      <span>AÑOS</span>
+    </div>
+
+    <!-- Contenido: badge + título horizontal + nombre -->
+    <div class="hero__content">
+      <div class="hero__badge">🐄 El gran día 🐄</div>
+
+      <!-- Título EN LÍNEA RECTA de izquierda a derecha, detrás de la chica -->
+      <h1 class="hero__title">
+        <span class="hero__title-feliz">¡Feliz</span>
+        <span class="hero__title-cumple">Cumpleaños!</span>
+      </h1>
+
+    </div>
+
+    <!-- Nombre fuera del hero__content para evitar stacking context -->
+    <h2 class="hero__name">Rebeca Cedeño <span class="sparkle">✨</span></h2>
+
+    <!-- Imagen sin fondo — al frente de todo (z-index mayor) -->
+    <div class="hero__image-wrap">
+      <img
+        src="src/media/becksCows_noBg.png"
+        alt="Rebeca"
+        class="hero__image"
+        onerror="this.src='src/media/becksCows.jpg'; this.classList.add('hero__image--fallback')"
+      />
+    </div>
+
+  </section>
+
+  <!-- MENSAJE ESPECIAL -->
+  <section class="message-section">
+    <div class="message-card">
+      <div class="message-card__deco">🤠</div>
+      <h3 class="message-card__title">Para mi mejor amiga</h3>
+      <p class="message-card__text">
+        Hoy es tu día y mereces todo lo mejor del mundo.<br>
+        Gracias por ser esa persona increíble que siempre está ahí,<br>
+        con tu estilo único y ese corazón enorme. 🐄💛
+      </p>
+      <div class="message-card__deco">🌻</div>
+    </div>
+  </section>
+
+  <!-- CUENTA ATRÁS / NÚMERO DE AÑOS -->
+  <section class="counter-section">
+    <h2 class="section-title">¡Cuántos años más guapa! 🎂</h2>
+    <div class="age-display" id="ageDisplay">
+      <div class="age-number" id="ageCounter">0</div>
+      <div class="age-label">añitos increíbles</div>
+    </div>
+  </section>
+
+  <!-- GALERÍA DE DESEOS -->
+  <section class="wishes-section">
+    <h2 class="section-title">Mis deseos para ti 🌟</h2>
+    <div class="wishes-grid">
+      <div class="wish-card wish-card--1"><div class="wish-card__icon">💃</div><h4>Alegría infinita</h4><p>Que cada día te traiga motivos para sonreír y bailar.</p></div>
+      <div class="wish-card wish-card--2"><div class="wish-card__icon">🏆</div><h4>Éxito total</h4><p>Que logres todo lo que te propongas, porque te lo mereces.</p></div>
+      <div class="wish-card wish-card--3"><div class="wish-card__icon">💖</div><h4>Amor y amistad</h4><p>Rodeada siempre de personas que te valoren como yo.</p></div>
+      <div class="wish-card wish-card--4"><div class="wish-card__icon">🌍</div><h4>Aventuras sin fin</h4><p>Que el mundo sea tuyo y puedas explorarlo a tu manera.</p></div>
+      <div class="wish-card wish-card--5"><div class="wish-card__icon">⭐</div><h4>Sueños cumplidos</h4><p>Que cada meta se convierta en realidad, paso a paso.</p></div>
+      <div class="wish-card wish-card--6"><div class="wish-card__icon">🐄</div><h4>Estilo propio</h4><p>Siempre fiel a ti misma, única e inigualable como siempre.</p></div>
+    </div>
+  </section>
+
+  <!-- GLOBOS INTERACTIVOS -->
+  <section class="balloons-section">
+    <h2 class="section-title">¡Revienta los globos! 🎈</h2>
+    <p class="balloons-hint">Haz clic en cada globo para ver tu mensaje especial</p>
+    <div class="balloons-grid" id="balloonsGrid"></div>
+  </section>
+
+  <!-- PASTEL INTERACTIVO -->
+  <section class="cake-section">
+    <h2 class="section-title">¡Sopla las velas! 🎂</h2>
+    <p class="cake-hint">Haz clic en el pastel para apagar las velas</p>
+    <div class="cake-wrapper">
+      <div class="cake" id="cake" onclick="blowCandles()">
+        <div class="cake__candles" id="candlesRow"></div>
+        <div class="cake__layer cake__layer--top"></div>
+        <div class="cake__layer cake__layer--mid"></div>
+        <div class="cake__layer cake__layer--bot"></div>
+        <div class="cake__plate"></div>
+      </div>
+      <p class="cake__message" id="cakeMessage"></p>
+    </div>
+  </section>
+
+  <!-- CONFETI FINAL -->
+  <section class="final-section">
+    <button class="confetti-btn" onclick="launchConfetti()">🎉 ¡Lanzar confeti! 🎉</button>
+    <h2 class="final-title">Con mucho amor 💛🐄</h2>
+    <p class="final-sub">Tu mejor amigo para siempre</p>
+  </section>
+
+  <script src="src/js/Script.js"></script>
+</body>
+</html>
