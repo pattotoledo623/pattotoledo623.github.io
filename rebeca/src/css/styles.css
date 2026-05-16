@@ -512,25 +512,33 @@ body {
 
 /* ── RESPONSIVE ───────────────────────────── */
 /* ── RESPONSIVE ───────────────────────────── */
+/* ── RESPONSIVE ───────────────────────────── */
 @media (max-width: 600px) {
-  /* ¡MAGIA AQUÍ! Empujamos todo hacia arriba */
+  /* Empujamos todo hacia arriba para eliminar el espacio en blanco */
   .hero {
     justify-content: flex-start; 
-    padding-top: 12vh; /* Si lo quieres más pegado al techo, bájalo a 8vh o 5vh */
+    padding-top: 10vh; 
   }
 
-  .hero__image-wrap { width: 85vw; } /* Agrandé un poco a Rebeca para que luzca más */
+  .hero__image-wrap { width: 85vw; } 
   .hero__content    { padding-top: 0; }
   .wishes-grid      { grid-template-columns: 1fr; }
-  .hero__bg-text span { font-size: 24vw; } /* Letras del fondo un poquito más grandes */
+  .hero__bg-text span { font-size: 24vw; } 
 
-  /* Ajustamos el título */
   .hero__title {
     flex-wrap: wrap;
     gap: 0.2em;
-    margin-bottom: 5rem; /* Reducimos el espacio inferior para que no haya otro hueco entre el título y la chica */
+    margin-bottom: 5rem; 
   }
   
   .hero__title-feliz,
-  .hero__title-cumple { font-size: clamp(2.5rem, 11vw, 4rem); } /* Texto un poco más legible */
+  .hero__title-cumple { font-size: clamp(2.5rem, 11vw, 4rem); } 
+
+  /* ¡NUEVO! Centrar el nombre de Rebeca en celulares */
+  .hero__name {
+    left: 0;
+    width: 100%;
+    text-align: center;
+    bottom: 8%; /* Ajusta este porcentaje si quieres que suba o baje un poquito */
+  }
 }
