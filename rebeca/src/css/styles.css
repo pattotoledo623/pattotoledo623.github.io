@@ -513,46 +513,48 @@ body {
 /* ── RESPONSIVE ───────────────────────────── */
 @media (max-width: 600px) {
   .hero {
-    /* Volvemos a centrar todo para mantener la armonía */
-    justify-content: center;
-    padding: 0 1rem; 
+    /* En lugar de centrar, forzamos que el contenido arranque desde arriba */
+    justify-content: flex-start;
+    padding-top: 10vh; /* Este es el espacio exacto desde el techo. Si quieres menos, pon 5vh */
   }
 
   .hero__image-wrap { 
-    width: 90vw; /* Rebeca un poco más grande para llenar mejor la pantalla */
+    width: 95vw; /* Rebeca casi a pantalla completa de ancho */
   } 
   
   .hero__content {
     padding-top: 0;
-    /* MAGIA: Deslizamos el título y el badge hacia arriba sin romper el diseño */
-    transform: translateY(-12vh); 
+    transform: none; /* Eliminamos el movimiento que dejaba el espacio fantasma */
   }
   
   .hero__title {
     flex-wrap: wrap;
-    gap: 0.2em;
-    margin-bottom: 0; /* Eliminamos el margen que estaba creando huecos */
+    gap: 0.1em;
+    margin-bottom: 0; 
   }
 
   .hero__title-feliz,
   .hero__title-cumple { 
     font-size: clamp(2.8rem, 12vw, 4rem); 
-    line-height: 1.1; /* Evita que las palabras choquen entre sí al estar en dos líneas */
+    line-height: 1.1; 
   }
 
-  /* Subimos un poquito las letras del fondo para que abracen bien al título principal */
   .hero__bg-text {
-    transform: translateY(-5vh);
+    transform: none; 
+    top: 5vh; /* Posicionamos las letras de fondo un poco más arriba para que cuadren */
   }
+  
   .hero__bg-text span { 
     font-size: 26vw; 
   }
 
-  /* Centramos perfectamente el nombre de abajo para la pantalla del celular */
+  /* CENTRADO ABSOLUTO Y A PRUEBA DE FALLOS PARA EL NOMBRE */
   .hero__name {
-    bottom: 8%; /* Lo separamos un poco más del borde inferior */
-    left: 50%;
-    transform: translateX(-50%); /* Esto garantiza el centrado absoluto */
+    width: 100%;        /* Hacemos que la caja del nombre ocupe toda la pantalla */
+    left: 0;            /* Lo pegamos a la izquierda */
+    text-align: center; /* Centramos el texto dentro de esa caja */
+    transform: none;    /* Quitamos cualquier movimiento previo */
+    bottom: 8%;         /* Lo separamos del borde inferior */
     font-size: 2.2rem;
   }
 }
