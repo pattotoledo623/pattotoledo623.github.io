@@ -511,34 +511,48 @@ body {
 }
 
 /* ── RESPONSIVE ───────────────────────────── */
-/* ── RESPONSIVE ───────────────────────────── */
-/* ── RESPONSIVE ───────────────────────────── */
 @media (max-width: 600px) {
-  /* Empujamos todo hacia arriba para eliminar el espacio en blanco */
   .hero {
-    justify-content: flex-start; 
-    padding-top: 10vh; 
+    /* Volvemos a centrar todo para mantener la armonía */
+    justify-content: center;
+    padding: 0 1rem; 
   }
 
-  .hero__image-wrap { width: 85vw; } 
-  .hero__content    { padding-top: 0; }
-  .wishes-grid      { grid-template-columns: 1fr; }
-  .hero__bg-text span { font-size: 24vw; } 
-
+  .hero__image-wrap { 
+    width: 90vw; /* Rebeca un poco más grande para llenar mejor la pantalla */
+  } 
+  
+  .hero__content {
+    padding-top: 0;
+    /* MAGIA: Deslizamos el título y el badge hacia arriba sin romper el diseño */
+    transform: translateY(-12vh); 
+  }
+  
   .hero__title {
     flex-wrap: wrap;
     gap: 0.2em;
-    margin-bottom: 5rem; 
+    margin-bottom: 0; /* Eliminamos el margen que estaba creando huecos */
   }
-  
-  .hero__title-feliz,
-  .hero__title-cumple { font-size: clamp(2.5rem, 11vw, 4rem); } 
 
-  /* ¡NUEVO! Centrar el nombre de Rebeca en celulares */
+  .hero__title-feliz,
+  .hero__title-cumple { 
+    font-size: clamp(2.8rem, 12vw, 4rem); 
+    line-height: 1.1; /* Evita que las palabras choquen entre sí al estar en dos líneas */
+  }
+
+  /* Subimos un poquito las letras del fondo para que abracen bien al título principal */
+  .hero__bg-text {
+    transform: translateY(-5vh);
+  }
+  .hero__bg-text span { 
+    font-size: 26vw; 
+  }
+
+  /* Centramos perfectamente el nombre de abajo para la pantalla del celular */
   .hero__name {
-    left: 0;
-    width: 100%;
-    text-align: center;
-    bottom: 8%; /* Ajusta este porcentaje si quieres que suba o baje un poquito */
+    bottom: 8%; /* Lo separamos un poco más del borde inferior */
+    left: 50%;
+    transform: translateX(-50%); /* Esto garantiza el centrado absoluto */
+    font-size: 2.2rem;
   }
 }
